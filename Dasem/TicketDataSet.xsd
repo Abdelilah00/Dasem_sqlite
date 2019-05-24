@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="TicketDataSet" targetNamespace="http://tempuri.org/TicketDataSet.xsd" xmlns:mstns="http://tempuri.org/TicketDataSet.xsd" xmlns="http://tempuri.org/TicketDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="DBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DBConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.DasemBeniSanssen.Properties.Settings.GlobalReference.Default.DBConnectionString" Provider="System.Data.SQLite.EF6" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Settings)" PropertyReference="ApplicationSettings.DasemBeniSanssen.Properties.Settings.GlobalReference.Default.ConnectionString" Provider="Devart.Data.SQLite" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TicketTableAdapter" GeneratorDataComponentClassName="TicketTableAdapter" Name="TicketTable" UserDataComponentName="TicketTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT IdTicket, DateE,DateS, Matricule, Tare, Brut, Net, (Net / Density / 1000) AS NET_M, 
+                    NomProduit, NomClient, Prix*Net/1000 As Prix
+                    FROM Ticket INNER JOIN Camion ON Ticket.IdCamion = Camion.IdCamion 
+                    INNER JOIN Produit ON Ticket.IdProduit = Produit.IdProduit 
+                    LEFT join Client C on Ticket.IdClient = C.IdClient</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IdTicket" DataSetColumn="IdTicket" />
+              <Mapping SourceColumn="Matricule" DataSetColumn="Matricule" />
+              <Mapping SourceColumn="Tare" DataSetColumn="Tare" />
+              <Mapping SourceColumn="Brut" DataSetColumn="Brut" />
+              <Mapping SourceColumn="Net" DataSetColumn="Net" />
+              <Mapping SourceColumn="NomProduit" DataSetColumn="NomProduit" />
+              <Mapping SourceColumn="NomClient" DataSetColumn="NomClient" />
+              <Mapping SourceColumn="DateE" DataSetColumn="DateE" />
+              <Mapping SourceColumn="DateS" DataSetColumn="DateS" />
+              <Mapping SourceColumn="Prix" DataSetColumn="Prix" />
+              <Mapping SourceColumn="NET_M" DataSetColumn="NET_M1" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="TicketDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="TicketDataSet" msprop:Generator_UserDSName="TicketDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TicketTable" msprop:Generator_TableClassName="TicketTableDataTable" msprop:Generator_TableVarName="tableTicketTable" msprop:Generator_TablePropName="TicketTable" msprop:Generator_RowDeletingName="TicketTableRowDeleting" msprop:Generator_RowChangingName="TicketTableRowChanging" msprop:Generator_RowEvHandlerName="TicketTableRowChangeEventHandler" msprop:Generator_RowDeletedName="TicketTableRowDeleted" msprop:Generator_UserTableName="TicketTable" msprop:Generator_RowChangedName="TicketTableRowChanged" msprop:Generator_RowEvArgName="TicketTableRowChangeEvent" msprop:Generator_RowClassName="TicketTableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdTicket" msprop:Generator_ColumnVarNameInTable="columnIdTicket" msprop:Generator_ColumnPropNameInRow="IdTicket" msprop:Generator_ColumnPropNameInTable="IdTicketColumn" msprop:Generator_UserColumnName="IdTicket" type="xs:long" />
+              <xs:element name="Matricule" msprop:Generator_ColumnVarNameInTable="columnMatricule" msprop:Generator_ColumnPropNameInRow="Matricule" msprop:Generator_ColumnPropNameInTable="MatriculeColumn" msprop:Generator_UserColumnName="Matricule" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Tare" msprop:Generator_ColumnVarNameInTable="columnTare" msprop:Generator_ColumnPropNameInRow="Tare" msprop:Generator_ColumnPropNameInTable="TareColumn" msprop:Generator_UserColumnName="Tare" type="xs:int" minOccurs="0" />
+              <xs:element name="Brut" msprop:Generator_ColumnVarNameInTable="columnBrut" msprop:Generator_ColumnPropNameInRow="Brut" msprop:Generator_ColumnPropNameInTable="BrutColumn" msprop:Generator_UserColumnName="Brut" type="xs:int" minOccurs="0" />
+              <xs:element name="Net" msprop:Generator_ColumnVarNameInTable="columnNet" msprop:Generator_ColumnPropNameInRow="Net" msprop:Generator_ColumnPropNameInTable="NetColumn" msprop:Generator_UserColumnName="Net" type="xs:int" minOccurs="0" />
+              <xs:element name="NomProduit" msprop:Generator_ColumnVarNameInTable="columnNomProduit" msprop:Generator_ColumnPropNameInRow="NomProduit" msprop:Generator_ColumnPropNameInTable="NomProduitColumn" msprop:Generator_UserColumnName="NomProduit" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NomClient" msprop:Generator_ColumnVarNameInTable="columnNomClient" msprop:Generator_ColumnPropNameInRow="NomClient" msprop:Generator_ColumnPropNameInTable="NomClientColumn" msprop:Generator_UserColumnName="NomClient" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DateE" msprop:Generator_ColumnVarNameInTable="columnDateE" msprop:Generator_ColumnPropNameInRow="DateE" msprop:Generator_ColumnPropNameInTable="DateEColumn" msprop:Generator_UserColumnName="DateE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DateS" msprop:Generator_ColumnVarNameInTable="columnDateS" msprop:Generator_ColumnPropNameInRow="DateS" msprop:Generator_ColumnPropNameInTable="DateSColumn" msprop:Generator_UserColumnName="DateS" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="NET_M" msprop:Generator_ColumnVarNameInTable="columnNET_M" msprop:Generator_ColumnPropNameInRow="NET_M" msprop:Generator_ColumnPropNameInTable="NET_MColumn" msprop:Generator_UserColumnName="NET_M" type="xs:long" minOccurs="0" />
+              <xs:element name="Prix" msprop:Generator_ColumnVarNameInTable="columnPrix" msprop:Generator_ColumnPropNameInRow="Prix" msprop:Generator_ColumnPropNameInTable="PrixColumn" msprop:Generator_UserColumnName="Prix" type="xs:long" minOccurs="0" />
+              <xs:element name="NET_M1" msdata:Caption="NET_M" msprop:Generator_ColumnVarNameInTable="columnNET_M1" msprop:Generator_ColumnPropNameInRow="NET_M1" msprop:Generator_ColumnPropNameInTable="NET_M1Column" msprop:Generator_UserColumnName="NET_M1" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TicketTable" />
+      <xs:field xpath="mstns:IdTicket" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
